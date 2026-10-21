@@ -21,13 +21,17 @@
     --stone-50: #FAFAF9;
     --stone-100: #F5F5F4;
     --stone-200: #E7E5E4;
-    --stone-300: #D6D3D1;
-    --stone-400: #A8A29E;
-    --stone-500: #78716C;
+    --stone-300: #BDB8B2;
+    --stone-400: #8B857F;
+    --stone-500: #66605A;
     --stone-600: #57534E;
     --stone-700: #44403C;
     --stone-800: #292524;
     --ink: #1C1C1C;
+    --blue: #1F5FD6;
+    --blue-soft: #F0F5FD;
+    --blue-line: #D5E2F7;
+    --blue-lt: #7EA8F5;
     --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -83,7 +87,7 @@
   .hero-bg { position: absolute; inset: 0; z-index: 0; background: var(--stone-100); }
   .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.8s ease-in-out; overflow: hidden; }
   .slide.active { opacity: 1; }
-  .slide img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); transform: scale(1); transition: transform 12s ease-out; }
+  .slide img { width: 100%; height: 100%; object-fit: cover;  transform: scale(1); transition: transform 12s ease-out; }
   .slide.active img { transform: scale(1.06); }
   .hero-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to right, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.6) 34%, rgba(255,255,255,0) 62%), linear-gradient(to bottom, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%); }
   .hero-in { position: relative; z-index: 2; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 28px; max-width: 900px; padding-inline: clamp(24px, 6vw, 96px); }
@@ -124,8 +128,8 @@
   .marquee { padding-block: 28px; background: var(--white); border-block: 1px solid var(--stone-100); overflow: hidden; }
   .marquee-track { display: flex; width: max-content; animation: marquee 60s linear infinite; opacity: .55; transition: opacity .5s; }
   .marquee:hover .marquee-track { opacity: 1; }
-  .marquee-track span { margin-inline: 44px; font-weight: 800; font-size: clamp(30px, 5vw, 64px); text-transform: uppercase; letter-spacing: -0.04em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1px var(--stone-300); }
-  .marquee-track span:nth-child(even) { -webkit-text-stroke-color: var(--stone-800); }
+  .marquee-track span { margin-inline: 44px; font-weight: 800; font-size: clamp(30px, 5vw, 64px); text-transform: uppercase; letter-spacing: -0.04em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1px var(--stone-400); }
+  .marquee-track span:nth-child(even) { -webkit-text-stroke-color: var(--blue); }
   @keyframes marquee { to { transform: translateX(-50%); } }
 
   /* seções */
@@ -318,6 +322,29 @@
     .faq p { padding-right: 0; }
     .antes .mo text { font-size: 17px; letter-spacing: 1px; }
   }
+  /* acento azul da logo, usado com parcimônia para dar contraste */
+  h1.display .l.muted { color: var(--blue); }
+  .head .mono, .head-row .mono { color: var(--blue); }
+  .stage-steps[data-phase="proc"] li[data-k="proc"] b, .stage-steps[data-phase="dados"] li[data-k="dados"] b, .stage-steps[data-phase="ia"] li[data-k="ia"] b { background: var(--blue); border-color: var(--blue); }
+  .stage-steps .bar u { background: var(--blue); }
+  .stage-steps .bar { background: var(--stone-300); }
+  .pillar .fig, .step .fig { background: var(--blue-soft); border-color: var(--blue-line); }
+  .pillar li::before { background: var(--blue); }
+  .pm .s1, .sm .f1 { stroke: var(--stone-500); } .pm .s2 { stroke: var(--stone-400); }
+  .pm g[fill="#D6D3D1"] { fill: #BDB8B2; }
+  .p-d1, .p-d2, .d-dot { fill: var(--blue); }
+  .p-by { stroke: var(--blue); }
+  .d-bar, .a-hl { fill: var(--blue); }
+  .a-scan { fill: var(--blue); opacity: .16; }
+  .pm g[fill="#A8A29E"] > rect { fill: var(--blue-lt); }
+  .sm .f2 { fill: #C5D5F0; } .sm .f3, .s3b { fill: var(--blue); }
+  .s2p, .s3k circle { fill: var(--blue); }
+  .s4r, .s4k { stroke: var(--blue); }
+  .antes .mo text { fill: #D6D1CB; }
+  .antes .mo g[stroke="#57534E"] { stroke: #8B857F; }
+  .antes .mo g[stroke="#78716C"] { stroke: #B5AFA9; }
+  .antes .mo g[stroke="#fff"][stroke-width="2"] { stroke: var(--blue-lt); }
+  .antes .ok-dot { fill: var(--blue-lt); }
   /* celular e tablet: coluna única, arte do hero em faixa abaixo do texto */
   @media (max-width: 1000px) {
     .grid12 { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -437,9 +464,9 @@
             <g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M707 110l6 6 11-12"/><path d="M707 190l6 6 11-12"/><path d="M707 270l6 6 11-12"/>
             </g>
-            <circle r="4" fill="#fff"><animateMotion dur="3s" repeatCount="indefinite" path="M440 110 H730"/></circle>
-            <circle r="4" fill="#fff"><animateMotion dur="3s" begin="-1s" repeatCount="indefinite" path="M440 190 H730"/></circle>
-            <circle r="4" fill="#fff"><animateMotion dur="3s" begin="-2s" repeatCount="indefinite" path="M440 270 H730"/></circle>
+            <circle class="ok-dot" r="4" fill="#fff"><animateMotion dur="3s" repeatCount="indefinite" path="M440 110 H730"/></circle>
+            <circle class="ok-dot" r="4" fill="#fff"><animateMotion dur="3s" begin="-1s" repeatCount="indefinite" path="M440 190 H730"/></circle>
+            <circle class="ok-dot" r="4" fill="#fff"><animateMotion dur="3s" begin="-2s" repeatCount="indefinite" path="M440 270 H730"/></circle>
 
             <!-- a IA na divisória -->
             <circle cx="380" cy="190" r="24" fill="#fff"/>
