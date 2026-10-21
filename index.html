@@ -75,8 +75,9 @@
   /* sócios */
   .partners { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: 48px; }
   .partner { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 28px; align-items: start; padding: 28px; background: var(--white); border: 1px solid var(--stone-200); }
-  .partner { transition: background .4s; }
-  .partner:hover { background: var(--stone-100); }
+  .js .partner.rv { transition: opacity 1s var(--ease), transform .5s var(--ease), background .4s, border-color .4s, box-shadow .5s var(--ease); }
+  .partner:hover { background: var(--blue-soft); border-color: var(--blue-line); box-shadow: 0 24px 48px -14px rgba(0,0,0,0.12); }
+  .js .partner.rv.on:hover { transform: translateY(-5px); }
   .ph img { transition: transform .4s; }
   .partner:hover .ph img { transform: scale(1.04); }
   .ph { position: relative; aspect-ratio: 4 / 5; background: var(--stone-100); overflow: hidden; display: grid; place-items: center; font-weight: 500; font-size: 56px; letter-spacing: -0.04em; color: var(--stone-400); }
